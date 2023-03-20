@@ -54,8 +54,23 @@ function moveTaskUp() {
 
 
 function moveTaskDown() {
+    // Seleccionar todos los botones "taskDown"
+    const taskDownButtons = document.querySelectorAll('img[src="images/taskDown.png"]');
 
+    // Agregar action listener a todos los "taskDown"
+    taskDownButtons.forEach(function (button) {
+        button.addEventListener("click", function () {
+            const currentTask = this.parentElement;
+            const nextTask = currentTask.nextElementSibling;
+
+            //cambiar las posiciones con el hermano anterior
+            if (nextTask) {
+                currentTask.parentElement.insertBefore(nextTask,currentTask);
+            }
+        });
+    });
 }
+
 
 
 
