@@ -5,7 +5,7 @@ function addItem() {
     const newText = document.getElementById("taskInput").value;
     const newTextNode = document.createTextNode(newText);
 
-    document.getElementById("taskInput").value = ""; // reseteamos el texto de la barra
+    document.getElementById("taskInput").value = ""; // Reset input text
 
     newTask.className = "list-group-item d-flex flex-row align-items-center";
     newTask.innerHTML = `
@@ -25,7 +25,7 @@ function addItem() {
         const currentTask = this.parentElement;
         const previousTask = currentTask.previousElementSibling;
 
-        //cambiar las posiciones con el hermano anterior
+        //Switch positions with previous task
         if (previousTask) {
             currentTask.parentElement.insertBefore(currentTask, previousTask);
         }
@@ -35,7 +35,7 @@ function addItem() {
         const currentTask = this.parentElement;
         const nextTask = currentTask.nextElementSibling;
 
-        //cambiar las posiciones con el hermano siguiente
+        //Switch positions with next task
         if (nextTask) {
             currentTask.parentElement.insertBefore(nextTask,currentTask);
         }
@@ -47,8 +47,8 @@ function addItem() {
         todoList.removeChild(currentTask);
     });
 
+    //Focus input after adding a task
     document.getElementById("taskInput").focus();
-    console.log(removeButton);
 }
 
 // Adds the new task when button is clicked and adds it to the bottom of the list
