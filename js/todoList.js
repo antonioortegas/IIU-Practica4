@@ -47,6 +47,7 @@ function addItem() {
         todoList.removeChild(currentTask);
     });
 
+    document.getElementById("taskInput").focus();
     console.log(removeButton);
 }
 
