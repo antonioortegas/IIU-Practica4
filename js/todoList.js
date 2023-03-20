@@ -14,47 +14,63 @@ function addItem() {
         <img id="downButton" src="images/taskDown.png" />
         <img id="removeButton" src="images/removeTask.png" />`;
 
+    const todoList = document.getElementById("todoList");
+    todoList.appendChild(newTask);
 
-  const todoList = document.getElementById("todoList");
-  todoList.appendChild(newTask);
+    const upButton = newTask.querySelector("#upButton");
+    const downButton = newTask.querySelector("#downButton");
+    const removeButton = newTask.querySelector("#removeButton");
 
-  const upButton = newTask.querySelector("#upButton");
-  const downButton = newTask.querySelector("#downButton");
-  const removeButton = newTask.querySelector("#removeButton");
 
-  upButton.addEventListener("click", moveTaskUp);
-  downButton.addEventListener("click", moveTaskDown);
-  removeButton.addEventListener("click", removeTask);
+
+    upButton.addEventListener("click", moveTaskUp);
+    downButton.addEventListener("click", moveTaskDown);
+    removeButton.addEventListener("click", removeTask);
+
+    console.log(removeButton);
 }
 
 // Adds the new task when button is clicked and adds it to the bottom of the list
 const addTaskButton = document.getElementById("addTaskButton");
 addTaskButton.onclick = addItem;
 
+function moveTaskUp() {
+    // Seleccionar todos los botones "taskUp"
+    const taskUpButtons = document.querySelectorAll('img[src="images/taskUp.png"]');
 
-// Seleccionar todos los botones "taskUp"
-const taskUpButtons = document.querySelectorAll('img[src="images/taskUp.png"]');
+    // Agregar action listener a todos los "taskUp"
+    taskUpButtons.forEach(function (button) {
+        button.addEventListener("click", function () {
+            const currentTask = this.parentElement;
+            const previousTask = currentTask.previousElementSibling;
 
-// Agregar action listener a todos los "taskUp"
-taskUpButtons.forEach(function (button) {
-    button.addEventListener("click", function () {
-        const currentTask = this.parentElement;
-        const previousTask = currentTask.previousElementSibling;
-
-        //cambiar las posiciones con el hermano anterior
-        if (previousTask) {
-            currentTask.parentElement.insertBefore(currentTask, previousTask);
-        }
+            //cambiar las posiciones con el hermano anterior
+            if (previousTask) {
+                currentTask.parentElement.insertBefore(currentTask, previousTask);
+            }
+        });
     });
-});
+}
 
 
-const removeButton = document.querySelectorAll('img[src="images/removeTask.png"]');
+function moveTaskDown() {
 
-removeButton.forEach(function (button) {
-    button.addEventListener("click", function () {
-        const currentTask = this.parentElement;
-        currentTask.innerHTML = "";
-        todoList.removeChild(currentTask);
+}
+
+
+
+function removeTask() {
+    const removeButton = document.querySelectorAll('img[src="images/removeTask.png"]');
+
+    removeButton.forEach(function (button) {
+        button.addEventListener("click", function () {
+            const currentTask = this.parentElement;
+            currentTask.innerHTML = "";
+            todoList.removeChild(currentTask);
+        });
     });
-});
+}
+
+
+
+
