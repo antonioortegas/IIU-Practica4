@@ -35,7 +35,7 @@ function addItem() {
         const currentTask = this.parentElement;
         const nextTask = currentTask.nextElementSibling;
 
-        //cambiar las posiciones con el hermano anterior
+        //cambiar las posiciones con el hermano siguiente
         if (nextTask) {
             currentTask.parentElement.insertBefore(nextTask,currentTask);
         }
@@ -51,5 +51,13 @@ function addItem() {
 }
 
 // Adds the new task when button is clicked and adds it to the bottom of the list
+
 const addTaskButton = document.getElementById("addTaskButton");
 addTaskButton.onclick = addItem;
+
+const addTaskInput = document.getElementById("taskInput");
+addTaskInput.addEventListener("keyup", function(event) {
+    if (event.code === "Enter") {
+        addItem();
+    }
+});
