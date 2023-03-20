@@ -21,13 +21,9 @@ function addItem() {
     const downButton = newTask.querySelector("#downButton");
     const removeButton = newTask.querySelector("#removeButton");
 
-
-
     upButton.addEventListener("click", moveTaskUp);
     downButton.addEventListener("click", moveTaskDown);
     removeButton.addEventListener("click", removeTask);
-
-    console.log(removeButton);
 }
 
 // Adds the new task when button is clicked and adds it to the bottom of the list
